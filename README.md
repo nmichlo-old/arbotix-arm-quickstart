@@ -1,7 +1,9 @@
 
 # Arbotix Arm Quickstart
 
-$ curl https://raw.githubusercontent.com/1386161/arbotix-arm-quickstart/master/arbotix-quickstart.sh | bash
+```
+curl https://raw.githubusercontent.com/1386161/arbotix-arm-quickstart/master/arbotix-quickstart.sh | bash
+```
 
 **This script has only been tested on Ubuntu 16.04**
 
