@@ -67,7 +67,7 @@ This script downloads and initialises an arbotix workspace in the current direct
 - westleydavis/arbotix:master     [arduino 1.6.x-1.8.x] (2 y/o)
     - (fork of interbotix/arbotix:arduino-1-6) has one line of ros patch, but doesn't seem to work properly.
 
-### OPTIONAL: Processing {latest 3.x.x}
+### OPTIONAL: Processing {latest 2.x.x}
 - Scripting IDE for visual artists, very similar to arduino in looks and function, including workspaces.
 - FILES:
     - .pde files are processing entry points.
