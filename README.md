@@ -32,6 +32,9 @@ This script downloads and initialises an arbotix workspace in the current direct
 ## 1️⃣ Software Versions:
 
 ### Arduino:
+
+> If your goal is to use ROS, arduino is only needed the first time to copy across ros.ino to the board.
+
 - Arduino 1.8.x is compatible with 1.6.x
   (The arduino community was forked prior to 1.8, and needed to keep compatibility).
 - FILES:
