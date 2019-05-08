@@ -1,6 +1,7 @@
 
 # Arbotix Arm Quickstart
 
+Navigate to the directory you want to use to hold all the files and run:
 ```
 curl https://raw.githubusercontent.com/1386161/arbotix-arm-quickstart/master/arbotix-quickstart.sh | bash
 ```
