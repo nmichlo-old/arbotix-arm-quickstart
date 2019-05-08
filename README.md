@@ -163,10 +163,10 @@ This script downloads and initialises an arbotix workspace in the current direct
 - Alternative to arbotix_terminal: https://github.com/KurtE/AX12_Test/
 
 ### Pincher:
-    - Pincher Product Page, Info, Guides: https://learn.trossenrobotics.com/interbotix/robot-arms/pincher-arm.html
-    - Servo IDs - Use Interbotix dynaManager (also sets correct baud rate):
-        - Setting the ID's of servos with the same ID will change both. Unplug one before doing this.
-        - The numbering of the servos on the pincher should be from 1 to 5, with 1 being the base rotational servo, 2 being the shoulder, 3 being the middle elbow, 4 the wrist and, 5 the pincer.
+- Pincher Product Page, Info, Guides: https://learn.trossenrobotics.com/interbotix/robot-arms/pincher-arm.html
+- Servo IDs - Use Interbotix dynaManager (also sets correct baud rate):
+    - Setting the ID's of servos with the same ID will change both. Unplug one before doing this.
+    - The numbering of the servos on the pincher should be from 1 to 5, with 1 being the base rotational servo, 2 being the shoulder, 3 being the middle elbow, 4 the wrist and, 5 the pincer.
 
 
 ## 6️⃣ Getting Started ROS:
