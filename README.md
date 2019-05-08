@@ -100,7 +100,7 @@ This script downloads and initialises an arbotix workspace in the current direct
 
 ### Incorrect Amperages vs. Voltages:
 - High Voltage:  **Very Bad** (damage components)
-- Low Voltage:   **Kinda Bad** (damage components)
+- Low Voltage:   **Kinda Bad** (less chance to damage components than high voltage)
 - High Amperage: **OK**  (only required current is drawn from psu)
 - Low Amperage:  **Kinda Bad** (PSU is overworked and low amperage might lead to voltage drop.)
 
