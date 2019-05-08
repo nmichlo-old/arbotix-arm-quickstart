@@ -50,7 +50,7 @@ This script downloads and initialises an arbotix workspace in the current direct
 - vanadiumlabs
     - produce arbotix board
 - interbotix
-    - A product range from trossenrobotics
+    - _A product range from trossenrobotics?_
     - interbotix is open source, including PhantomX Pincher (very similar to turtlebot arm)
 
 ### Arbotix (github.com: arbotix) (Arduino Libraries & Examples):
@@ -125,14 +125,14 @@ This script downloads and initialises an arbotix workspace in the current direct
 - $ `screen /dev/ttyUSB0 {baud-rate}`
 
 
-## 4️⃣ Guides:
+## 4️⃣ Resources:
 
-### Arms:
+### Vendor Arm Pages:
 - https://www.interbotix.com/Robotic-Arms
 - https://learn.trossenrobotics.com/interbotix/robot-arms/pincher-arm
 - https://learn.trossenrobotics.com/demos/phantomx-pincher-robot-arm-demos.html
 
-### Resources:
+### Repos:
 - Arbotix:     https://github.com/Interbotix/arbotix/tree/arduino-1-6
 - Arbotix_Ros: https://github.com/vanadiumlabs/arbotix_ros
 - Arbotix_Ros: https://github.com/Interbotix/arbotix_ros/tree/parallel_gripper
@@ -141,7 +141,13 @@ This script downloads and initialises an arbotix workspace in the current direct
 - Ros_Arm:     https://github.com/Interbotix/phantomx_pincher_arm
 - Ros_Arm:     https://github.com/turtlebot/turtlebot_arm
 
+### Info/Problems:
+- DynaManager Not Finding Servos: http://forums.trossenrobotics.com/showthread.php?10044
+- Can't See Arbotix-M on Board List: http://forums.trossenrobotics.com/showthread.php?9971
+- ArbotiX 1.6.x Files & Libraries: http://forums.trossenrobotics.com/showthread.php?7971
+- Alternative to arbotix_terminal: https://github.com/KurtE/AX12_Test/
     
+
 ## 5️⃣ Getting Started:
 
 **WARNING**: servos and the arm are suprisingly violent - the device may damage itself.
@@ -155,12 +161,6 @@ This script downloads and initialises an arbotix workspace in the current direct
     - 2 - SKIP (although still $ `chmod 777 {usb device}` )
     - 6 - **WARNING**: Use PincherTest instead of AXSimpleTest - See WARNINGS above.
     NOTE: dont forget to properly set (Tools -> programmer, Tools -> board, Tools -> Port) in arduino.
-
-### Info/Problems:
-- DynaManager Not Finding Servos: http://forums.trossenrobotics.com/showthread.php?10044
-- Can't See Arbotix-M on Board List: http://forums.trossenrobotics.com/showthread.php?9971
-- ArbotiX 1.6.x Files & Libraries: http://forums.trossenrobotics.com/showthread.php?7971
-- Alternative to arbotix_terminal: https://github.com/KurtE/AX12_Test/
 
 ### Pincher:
 - Pincher Product Page, Info, Guides: https://learn.trossenrobotics.com/interbotix/robot-arms/pincher-arm.html
