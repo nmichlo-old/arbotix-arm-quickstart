@@ -27,7 +27,7 @@ This script downloads and initialises an arbotix workspace in the current direct
 
 # TL;DR Arbotix:
 
-> The information below does not relate one to one with the project above, but may be useful.
+> The information below does not relate one to one with the project above, but are snippets of info I found useful.
 
 ## 1️⃣ Software Versions:
 
