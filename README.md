@@ -23,6 +23,8 @@ This script downloads and initialises an arbotix workspace in the current direct
   - Processing Workspace (+controlP5, +dynaManager)
   - Catkin Workspace (+PhantomX and +Turtlebot hardware descriptions by Intrabotix, +Arbotix-Ros by VanadiumLabs)
 
+> TODO: investigate adding stuff from: https://github.com/IOJVision/PhantomX-Pincher-Vibot-2019-
+
 ------------------------------------------------------------------------
 
 # TL;DR Arbotix:
