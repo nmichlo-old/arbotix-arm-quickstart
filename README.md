@@ -99,8 +99,8 @@ This script downloads and initialises an arbotix workspace in the current direct
     - power from usb & psu at same time is possible.
 
 ### Incorrect Amperages vs. Voltages:
-- High Voltage:  **Bad** (damage components)
-- Low Voltage:   **Bad** (damage components)
+- High Voltage:  **Very Bad** (damage components)
+- Low Voltage:   **Kinda Bad** (damage components)
 - High Amperage: **OK**  (only required current is drawn from psu)
 - Low Amperage:  **Kinda Bad** (PSU is overworked and low amperage might lead to voltage drop.)
 
