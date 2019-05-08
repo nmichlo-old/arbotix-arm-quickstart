@@ -89,7 +89,7 @@ This script downloads and initialises an arbotix workspace in the current direct
 
 ### PhantomX Pincher:
 - The basic pincher needs 12V, 5A supply.
-    - ***NOTE*** 2A supply can be used for only 1 servo! Otherwise servo voltage is too low, and they are detected improperly / randomly.
+    - ***NOTE*** 2A supply can be used for only 1 servo! Otherwise servo voltage is too low, and they may not be detected properly. (If servos seem to be detected incorrectly, try connecting each and checking their id's - Make sure they are not all the same. Servos can only be mapped individually if they are the same because commands are sent to both simultaniously.)
 
 ### Powering Board:
 - The board only can be powered by USB, but then the pins need to be swapped, see manual.
