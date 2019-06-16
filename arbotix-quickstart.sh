@@ -198,7 +198,7 @@ do_install() {
             (clr 91 "WARNING: Skipping Catkin Workspace Setup (ros-kinetic is not installed)")
         set_wd "${CTKN_WS}/src"
             git_clone_cached "kinetic-devel" "https://github.com/turtlebot/turtlebot_arm.git" "turtlebot_arm"
-            git_clone_cached "master" "https://github.com/Interbotix/phantomx_pincher_arm.git" "phantomx_pincher_arm."
+            git_clone_cached "master" "https://github.com/Interbotix/phantomx_pincher_arm.git" "phantomx_pincher_arm"
             git_clone_cached "indigo-devel" "https://github.com/vanadiumlabs/arbotix_ros.git" "arbotix_ros"
         export ctkn=1
     }
