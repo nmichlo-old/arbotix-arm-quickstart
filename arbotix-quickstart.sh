@@ -189,18 +189,20 @@ do_install() {
                     clr 91 "An error occured installing ros-kinetic-arbotix, This package will be downloaded manually any into your workspace!") || \
                 clr 93 "This package will be downloaded manually anyway into your workspace!\n"
         fi
+        # install moveit
+        # install math lib
     }
 
     _catkin_ws() {
         heading "SETUP - Catkin"
         mkdir -pv "${CTKN_WS}/src"
-        ([ -x "$(command -v catkin_make)" ] && (set_wd "${CTKN_WS}" && catkin_make)) || \
-            (clr 91 "WARNING: Skipping Catkin Workspace Setup (ros-kinetic is not installed)")
+        # ([ -x "$(command -v catkin_make)" ] && (set_wd "${CTKN_WS}" && catkin_make)) || \
+        #     (clr 91 "WARNING: Skipping Catkin Workspace Setup (ros-kinetic is not installed)")
         set_wd "${CTKN_WS}/src"
             git_clone_cached "kinetic-devel" "https://github.com/turtlebot/turtlebot_arm.git" "turtlebot_arm"
             git_clone_cached "master" "https://github.com/Interbotix/phantomx_pincher_arm.git" "phantomx_pincher_arm"
             git_clone_cached "indigo-devel" "https://github.com/vanadiumlabs/arbotix_ros.git" "arbotix_ros"
-        export ctkn=1
+        export ctkn_ws=1
     }
 
     # INSTALL
@@ -234,6 +236,7 @@ do_install() {
     [ -n "$ardn_ws" ] && clr 90 "Arduino Workspace: \"${ARDN_WS}\"\n"
     [ -n "$proc_ws" ] && clr 90 "Processing Workspace: \"${PROC_WS}\"\n"
     [ -n "$ctkn_ws" ] && clr 90 "Catkin Workspace: \"${CTKN_WS}\"\n"
+    [ -n "$ctkn_ws" ] && clr 90 "- Optional: Create a simlink: $ ln -sv \"${CTKN_WS}\" \"${HOME}/catkin_ws\"\n"
     clr 91 "To uninstall all files run the script again with the \"-c\" flag\n"
     echo
 }
