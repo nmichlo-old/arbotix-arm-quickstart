@@ -280,9 +280,16 @@ if [ "$USER" == "root" ]; then
 fi
 
 # ENTRY POINT
-do_clean
-if [ -z "$force_clean" ] || [ -n "$force_install" ]; then
+if [ -n "$force_clean" ]; then
+    do_clean
+fi
+
+if [ -n "$force_install" ]; then
     do_install
+fi
+
+if [ -z "$force_clean" ] && [ -z "$force_install" ]; then
+    do_help
 fi
 
 # =========================================================================    #
