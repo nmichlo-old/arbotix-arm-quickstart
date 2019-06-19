@@ -191,13 +191,28 @@ NOTE: PhantomX Model is different from Turtlebot Pincher.
 - Make a folder called 'src' inside the catkin workspace and clone the following repos into it:
     - arbotix_ros: https://github.com/Interbotix/arbotix_ros/tree/turtlebot2i (turtlebot2i branch)
     - turtlebot_arm:   https://github.com/turtlebot/turtlebot_arm (kinetic-devel branch)
+- OPTIONAL, make your life easier by creating the following file as 'env.sh' and sourcing it:
+    ```
+    #!/bin/bash
+
+    # only source the workspace if catkin_make has been run
+    if [ -f "devel/setup.bash" ]; then source devel/setup.bash ; fi
+    # change the arm to the pincher
+    if [ -z "$TURTLEBOT_ARM1" ]; then export TURTLEBOT_ARM1="pincher" ; fi
+    # ability to launch desktop programs via ssh
+    if ([ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]) && [ -z "$DISPLAY" ]; then export DISPLAY=":1" ; fi
+    # make compile times quicker, only generate c++ and python bindings
+    if [ -z "$ROS_LANG_DISABLE" ]; then export ROS_LANG_DISABLE="geneus:genlisp:gennodejs" ; fi
+    ```
 - Run `$ catkin_make` inside the root of the workspace to compile the files.
     - Dependencies for python2 that might need to be installed include:
       `$ pip install defusedxml rospkg empy catkin_pkg catkin_tools rosinstall rosinstall-generator wstool pyserial numpy pyside2`
     - Otherwise the following might work instead: `$ rosdep install --from-paths src --ignore-src --rosdistro kinetic -y`
-- Source the newly created files in the workspace with: `$ source devel/setup.bash`
-- Export the following environment variable if your arm is the pincher:
-    - `$ export TURTLEBOT_ARM1=pincher` 
+- Variables:
+    - Source the newly created files in the workspace with: `$ source devel/setup.bash`
+    - Export the following environment variable if your arm is the pincher:
+        - `$ export TURTLEBOT_ARM1=pincher`
+    - Otherwise, instead of doing the above manually, use the optional step above `$ source env.sh`
 - Run rvis:
     - Simulated:
         - `$ roslaunch turtlebot_arm_moveit_config turtlebot_arm_moveit.launch sim:=true --screen`
