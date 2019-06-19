@@ -196,12 +196,11 @@ do_install() {
     _catkin_ws() {
         heading "SETUP - Catkin"
         mkdir -pv "${CTKN_WS}/src"
-        # ([ -x "$(command -v catkin_make)" ] && (set_wd "${CTKN_WS}" && catkin_make)) || \
-        #     (clr 91 "WARNING: Skipping Catkin Workspace Setup (ros-kinetic is not installed)")
         set_wd "${CTKN_WS}/src"
             git_clone_cached "kinetic-devel" "https://github.com/turtlebot/turtlebot_arm.git" "turtlebot_arm"
-            git_clone_cached "master" "https://github.com/Interbotix/phantomx_pincher_arm.git" "phantomx_pincher_arm"
-            git_clone_cached "indigo-devel" "https://github.com/vanadiumlabs/arbotix_ros.git" "arbotix_ros"
+            git_clone_cached "turtlebot2i" "https://github.com/Interbotix/arbotix_ros" "arbotix_ros"
+        # ([ -x "$(command -v catkin_make)" ] && (set_wd "${CTKN_WS}" && catkin_make)) || \
+        #     (clr 91 "WARNING: Skipping Catkin Workspace Setup (ros-kinetic is not installed or dependencies not met)")
         export ctkn_ws=1
     }
 
@@ -229,6 +228,12 @@ do_install() {
     [ -n "$proc_ws" ] && clr 90 "- Option A: Update Processing settings (File -> Preferences) to point to: \"${PROC_WS}\"\n"
     [ -n "$proc_ws" ] && clr 90 "- Option B: Create a simlink in place of the default directory with: $ ln -sv \"${PROC_WS}\" \"${HOME}/sketchbook\"\n"
     echo
+    [ -n "$ctkn_ws" ] && clr 92 "Catkin Workspace located at: \"${CTKN_WS}\"\n"
+    [ -n "$ctkn_ws" ] && clr 91 "Build the workspace when in the root directory using: $ catkin_make\n"
+    [ -n "$ctkn_ws" ] && clr 90 "- If the above fails, make sure python2 is being used, and the following dependencies are installed:\n"
+    [ -n "$ctkn_ws" ] && clr 90 "  $ pip2 install defusedxml rospkg empy catkin_pkg catkin_tools rosinstall rosinstall-generator wstool pyserial numpy pyside2\n"
+    [ -n "$ctkn_ws" ] && clr 90 "- Optional: Create a simlink: $ ln -sv \"${CTKN_WS}\" \"${HOME}/catkin_ws\"\n"
+    echo
     echo $(clr 33 "Downloads have been cached in \"${CACHE_DIR}\"")
     clr 90 "This directory can be deleted to save space! $ rm -rf \"${CACHE_DIR}\"\n"
     echo
@@ -236,7 +241,6 @@ do_install() {
     [ -n "$ardn_ws" ] && clr 90 "Arduino Workspace: \"${ARDN_WS}\"\n"
     [ -n "$proc_ws" ] && clr 90 "Processing Workspace: \"${PROC_WS}\"\n"
     [ -n "$ctkn_ws" ] && clr 90 "Catkin Workspace: \"${CTKN_WS}\"\n"
-    [ -n "$ctkn_ws" ] && clr 90 "- Optional: Create a simlink: $ ln -sv \"${CTKN_WS}\" \"${HOME}/catkin_ws\"\n"
     clr 91 "To uninstall all files run the script again with the \"-c\" flag\n"
     echo
 }
