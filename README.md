@@ -179,6 +179,7 @@ NOTE: PhantomX Model is different from Turtlebot Pincher.
     - 2 - SKIP (although still $ `chmod 777 {usb device}` )
     - 6 - **WARNING**: Use PincherTest instead of AXSimpleTest - See WARNINGS above.
     NOTE: dont forget to properly set (Tools -> programmer, Tools -> board, Tools -> Port) in arduino.
+- **NB**: firmware is persistent even without power.
 
 ### Pincher:
 - Pincher Product Page, Info, Guides: https://learn.trossenrobotics.com/interbotix/robot-arms/pincher-arm.html
@@ -186,10 +187,14 @@ NOTE: PhantomX Model is different from Turtlebot Pincher.
     - Setting the ID's of servos with the same ID will change both. Unplug one before doing this.
     - The numbering of the servos on the pincher should be from 1 to 5, with 1 being the base rotational servo, 2 being the shoulder, 3 being the middle elbow, 4 the wrist and, 5 the pincer.
 
+
+## 6️⃣ Getting Started ROS:
+
 ### Catkin Workspace & Moveit Planning:
 - Make a new catkin workspace eg. `$ mkdir catkin_ws`
 - Make a folder called 'src' inside the catkin workspace and clone the following repos into it:
     - arbotix_ros: https://github.com/Interbotix/arbotix_ros/tree/turtlebot2i (turtlebot2i branch)
+        - includes arduino firmware
     - turtlebot_arm:   https://github.com/turtlebot/turtlebot_arm (kinetic-devel branch)
 - OPTIONAL, make your life easier by creating the following file as 'env.sh' and sourcing it:
     ```
@@ -219,8 +224,7 @@ NOTE: PhantomX Model is different from Turtlebot Pincher.
     - Physical:
         - `$ roslaunch turtlebot_arm_bringup arm.launch`
         - `$ roslaunch turtlebot_arm_moveit_config turtlebot_arm_moveit.launch sim:=false --screen`
-  
-## 6️⃣ Getting Started ROS:
+ 
 
 -- TODO: ROS ROS ROS --
 
