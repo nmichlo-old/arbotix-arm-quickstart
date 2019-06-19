@@ -184,10 +184,23 @@ NOTE: PhantomX Model is different from Turtlebot Pincher.
     - Setting the ID's of servos with the same ID will change both. Unplug one before doing this.
     - The numbering of the servos on the pincher should be from 1 to 5, with 1 being the base rotational servo, 2 being the shoulder, 3 being the middle elbow, 4 the wrist and, 5 the pincer.
 
-### Catkin Workspace Src:
-- **Arbotix_ROS**: https://github.com/Interbotix/arbotix_ros/tree/turtlebot2i
-- **turtlebot**:   https://github.com/turtlebot/turtlebot_arm
-
+### Catkin Workspace & Moveit Planning:
+- Make a new catkin workspace eg. `$ mkdir catkin_ws`
+- Make a folder called 'src' inside the catkin workspace and clone the following repos into it:
+    - arbotix_ros: https://github.com/Interbotix/arbotix_ros/tree/turtlebot2i (turtlebot2i branch)
+    - turtlebot_arm:   https://github.com/turtlebot/turtlebot_arm (kinetic-devel branch)
+- Run `$ catkin_make` inside the root of the workspace to compile the files.
+    - Dependencies for python2 that might need to be installed include:
+      `$ pip install defusedxml rospkg empy catkin_pkg catkin_tools rosinstall rosinstall-generator wstool pyserial numpy pyside2`
+    - Otherwise the following might work instead: `$ rosdep install --from-paths src --ignore-src --rosdistro kinetic -y`
+- Source the newly created files in the workspace with: `$ source devel/setup.bash`
+- Run rvis:
+    - Simulated:
+        - `$ roslaunch turtlebot_arm_moveit_config turtlebot_arm_moveit.launch sim:=true --screen`
+    - Physical:
+        - `$ roslaunch turtlebot_arm_bringup arm.launch`
+        - `$ roslaunch turtlebot_arm_moveit_config turtlebot_arm_moveit.launch sim:=false --screen`
+  
 ## 6️⃣ Getting Started ROS:
 
 -- TODO: ROS ROS ROS --
