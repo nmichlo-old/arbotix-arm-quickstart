@@ -41,7 +41,7 @@ This script downloads and initialises an arbotix workspace in the current direct
   (The arduino community was forked prior to 1.8, and needed to keep compatibility).
 - FILES:
     - .ino files are arduino entry points.
-    - "<NAME>.ino" files must be in a directry called "<NAME>"
+    - "{NAME}.ino" files must be in a directry called "{NAME}"
 - WORKSPACE: Uses a workspace folder that can be set in preferences. Has the following structure:
     - libraries
         - {after install} ./*
@@ -73,7 +73,7 @@ This script downloads and initialises an arbotix workspace in the current direct
 - Scripting IDE for visual artists, very similar to arduino in looks and function, including workspaces.
 - FILES:
     - .pde files are processing entry points.
-    - "<NAME>.pde" files must be in a directry called "<NAME>"
+    - "{NAME}.pde" files must be in a directry called "{NAME}"
 - WORKSPACE: Uses a workspace folder that can be set in preferences. Has the following structure:
     - libraries
         - {after install} ./ControlP5 {first 2.x.x, later versions of 2 are incompatible}
@@ -115,7 +115,7 @@ This script downloads and initialises an arbotix workspace in the current direct
 ### Mount Point:
 - /dev/ttyUSB0
     - Some programs cannot handle other mount points.
-    - Disconnects may cause ttyUSB<N> to increment.
+    - Disconnects may cause ttyUSB{N} to increment.
 
 ### Permissions:
 - Each time /dev/ttyUSB0 is connected, permissions must be changed to 777.
@@ -135,13 +135,29 @@ This script downloads and initialises an arbotix workspace in the current direct
 - https://learn.trossenrobotics.com/demos/phantomx-pincher-robot-arm-demos.html
 
 ### Repos:
+
+#### Arduino Firmware & Examples:
+- Arbotix:     https://github.com/vanadiumlabs/arbotix
 - Arbotix:     https://github.com/Interbotix/arbotix/tree/arduino-1-6
-- Arbotix_Ros: https://github.com/vanadiumlabs/arbotix_ros
-- Arbotix_Ros: https://github.com/Interbotix/arbotix_ros/tree/parallel_gripper
-- tutorial:    https://www.youtube.com/watch?v=AdA1l22FDU8
+
+#### Ros Interface:
+- Arbotix_ROS: https://github.com/vanadiumlabs/arbotix_ros
+- Arbotix_ROS: https://github.com/Interbotix/arbotix_ros/tree/turtlebot2i
+- Arbotix_ROS: https://github.com/MatthewVerbryke/arbotix_ros (Gazebo Additions)
+
+#### Turtlebot Pincher Arm
+- turtlebot:   https://github.com/turtlebot/turtlebot_arm
+- turtlebot:   https://github.com/corot/turtlebot_arm (fixes?)
+
+#### PhantomX Arm
+NOTE: PhantomX Model is different from Turtlebot Pincher.
+- phantomx:    https://github.com/Interbotix/phantomx_pincher_arm
+- phantomx:    https://github.com/Playfish/phantomx_pincher_arm (Gazebo Additions)
+
+### Tutorials
+- tutorial: https://github.com/IOJVision/PhantomX-Pincher-Vibot-2019-
+- tutorial: https://www.youtube.com/watch?v=AdA1l22FDU8
     * Alt link in video: https://edu.gaitech.hk/turtlebot/turtlebot-arm-pincher.html
-- Ros_Arm:     https://github.com/Interbotix/phantomx_pincher_arm
-- Ros_Arm:     https://github.com/turtlebot/turtlebot_arm
 
 ### Info/Problems:
 - DynaManager Not Finding Servos: http://forums.trossenrobotics.com/showthread.php?10044
