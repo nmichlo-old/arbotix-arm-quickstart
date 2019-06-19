@@ -118,6 +118,8 @@ This script downloads and initialises an arbotix workspace in the current direct
 ### Permissions:
 - Each time /dev/ttyUSB0 is connected, permissions must be changed to 777.
     $ `chmod 777 /dev/ttyUSB0`
+- Make this permanent by adding your user to the 'dialout' group:
+    $ `sudo adduser {user} dialout`
 
 ### Manual FTDI driver installation is not necesary on modern systems.
 
