@@ -23,8 +23,6 @@ This script downloads and initialises an arbotix workspace in the current direct
   - Processing Workspace (+controlP5, +dynaManager)
   - Catkin Workspace (+PhantomX and +Turtlebot hardware descriptions by Intrabotix, +Arbotix-Ros by VanadiumLabs)
 
-> TODO: investigate adding stuff from: https://github.com/IOJVision/PhantomX-Pincher-Vibot-2019-
-
 ------------------------------------------------------------------------
 
 # TL;DR Arbotix:
@@ -142,11 +140,11 @@ This script downloads and initialises an arbotix workspace in the current direct
 
 #### Ros Interface:
 - Arbotix_ROS: https://github.com/vanadiumlabs/arbotix_ros
-- Arbotix_ROS: https://github.com/Interbotix/arbotix_ros/tree/turtlebot2i
+- **Arbotix_ROS**: https://github.com/Interbotix/arbotix_ros/tree/turtlebot2i
 - Arbotix_ROS: https://github.com/MatthewVerbryke/arbotix_ros (Gazebo Additions)
 
 #### Turtlebot Pincher Arm
-- turtlebot:   https://github.com/turtlebot/turtlebot_arm
+- **turtlebot**:   https://github.com/turtlebot/turtlebot_arm
 - turtlebot:   https://github.com/corot/turtlebot_arm (fixes?)
 
 #### PhantomX Arm
@@ -186,6 +184,9 @@ NOTE: PhantomX Model is different from Turtlebot Pincher.
     - Setting the ID's of servos with the same ID will change both. Unplug one before doing this.
     - The numbering of the servos on the pincher should be from 1 to 5, with 1 being the base rotational servo, 2 being the shoulder, 3 being the middle elbow, 4 the wrist and, 5 the pincer.
 
+### Catkin Workspace Src:
+- **Arbotix_ROS**: https://github.com/Interbotix/arbotix_ros/tree/turtlebot2i
+- **turtlebot**:   https://github.com/turtlebot/turtlebot_arm
 
 ## 6️⃣ Getting Started ROS:
 
