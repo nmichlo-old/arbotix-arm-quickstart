@@ -1,5 +1,5 @@
 
-# Arbotix Arm Quickstart
+# TURTLEBOT_ARM1=pincher Arm Quickstart
 
 Navigate to the directory you want to use to hold all the files and run:
 ```
@@ -23,8 +23,6 @@ This script downloads and initialises an arbotix workspace in the current direct
   - Processing Workspace (+controlP5, +dynaManager)
   - Catkin Workspace (+PhantomX and +Turtlebot hardware descriptions by Intrabotix, +Arbotix-Ros by VanadiumLabs)
 
-> TODO: investigate adding stuff from: https://github.com/IOJVision/PhantomX-Pincher-Vibot-2019-
-
 ------------------------------------------------------------------------
 
 # TL;DR Arbotix:
@@ -41,7 +39,7 @@ This script downloads and initialises an arbotix workspace in the current direct
   (The arduino community was forked prior to 1.8, and needed to keep compatibility).
 - FILES:
     - .ino files are arduino entry points.
-    - "<NAME>.ino" files must be in a directry called "<NAME>"
+    - "{NAME}.ino" files must be in a directry called "{NAME}"
 - WORKSPACE: Uses a workspace folder that can be set in preferences. Has the following structure:
     - libraries
         - {after install} ./*
@@ -73,7 +71,7 @@ This script downloads and initialises an arbotix workspace in the current direct
 - Scripting IDE for visual artists, very similar to arduino in looks and function, including workspaces.
 - FILES:
     - .pde files are processing entry points.
-    - "<NAME>.pde" files must be in a directry called "<NAME>"
+    - "{NAME}.pde" files must be in a directry called "{NAME}"
 - WORKSPACE: Uses a workspace folder that can be set in preferences. Has the following structure:
     - libraries
         - {after install} ./ControlP5 {first 2.x.x, later versions of 2 are incompatible}
@@ -115,11 +113,13 @@ This script downloads and initialises an arbotix workspace in the current direct
 ### Mount Point:
 - /dev/ttyUSB0
     - Some programs cannot handle other mount points.
-    - Disconnects may cause ttyUSB<N> to increment.
+    - Disconnects may cause ttyUSB{N} to increment.
 
 ### Permissions:
 - Each time /dev/ttyUSB0 is connected, permissions must be changed to 777.
     $ `chmod 777 /dev/ttyUSB0`
+- Make this permanent by adding your user to the 'dialout' group:
+    $ `sudo adduser {user} dialout`
 
 ### Manual FTDI driver installation is not necesary on modern systems.
 
@@ -135,13 +135,29 @@ This script downloads and initialises an arbotix workspace in the current direct
 - https://learn.trossenrobotics.com/demos/phantomx-pincher-robot-arm-demos.html
 
 ### Repos:
+
+#### Arduino Firmware & Examples:
+- Arbotix:     https://github.com/vanadiumlabs/arbotix
 - Arbotix:     https://github.com/Interbotix/arbotix/tree/arduino-1-6
-- Arbotix_Ros: https://github.com/vanadiumlabs/arbotix_ros
-- Arbotix_Ros: https://github.com/Interbotix/arbotix_ros/tree/parallel_gripper
-- tutorial:    https://www.youtube.com/watch?v=AdA1l22FDU8
+
+#### Ros Interface:
+- Arbotix_ROS: https://github.com/vanadiumlabs/arbotix_ros
+- **Arbotix_ROS**: https://github.com/Interbotix/arbotix_ros/tree/turtlebot2i
+- Arbotix_ROS: https://github.com/MatthewVerbryke/arbotix_ros (Gazebo Additions)
+
+#### Turtlebot Pincher Arm
+- **turtlebot**:   https://github.com/turtlebot/turtlebot_arm
+- turtlebot:   https://github.com/corot/turtlebot_arm (fixes?)
+
+#### PhantomX Arm
+NOTE: PhantomX Model is different from Turtlebot Pincher.
+- phantomx:    https://github.com/Interbotix/phantomx_pincher_arm
+- phantomx:    https://github.com/Playfish/phantomx_pincher_arm (Gazebo Additions)
+
+### Tutorials
+- tutorial: https://github.com/IOJVision/PhantomX-Pincher-Vibot-2019-
+- tutorial: https://www.youtube.com/watch?v=AdA1l22FDU8
     * Alt link in video: https://edu.gaitech.hk/turtlebot/turtlebot-arm-pincher.html
-- Ros_Arm:     https://github.com/Interbotix/phantomx_pincher_arm
-- Ros_Arm:     https://github.com/turtlebot/turtlebot_arm
 
 ### Info/Problems:
 - DynaManager Not Finding Servos: http://forums.trossenrobotics.com/showthread.php?10044
@@ -170,7 +186,40 @@ This script downloads and initialises an arbotix workspace in the current direct
     - Setting the ID's of servos with the same ID will change both. Unplug one before doing this.
     - The numbering of the servos on the pincher should be from 1 to 5, with 1 being the base rotational servo, 2 being the shoulder, 3 being the middle elbow, 4 the wrist and, 5 the pincer.
 
+### Catkin Workspace & Moveit Planning:
+- Make a new catkin workspace eg. `$ mkdir catkin_ws`
+- Make a folder called 'src' inside the catkin workspace and clone the following repos into it:
+    - arbotix_ros: https://github.com/Interbotix/arbotix_ros/tree/turtlebot2i (turtlebot2i branch)
+    - turtlebot_arm:   https://github.com/turtlebot/turtlebot_arm (kinetic-devel branch)
+- OPTIONAL, make your life easier by creating the following file as 'env.sh' and sourcing it:
+    ```
+    #!/bin/bash
 
+    # only source the workspace if catkin_make has been run
+    if [ -f "devel/setup.bash" ]; then source devel/setup.bash ; fi
+    # change the arm to the pincher
+    if [ -z "$TURTLEBOT_ARM1" ]; then export TURTLEBOT_ARM1="pincher" ; fi
+    # ability to launch desktop programs via ssh
+    if ([ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]) && [ -z "$DISPLAY" ]; then export DISPLAY=":1" ; fi
+    # make compile times quicker, only generate c++ and python bindings
+    if [ -z "$ROS_LANG_DISABLE" ]; then export ROS_LANG_DISABLE="geneus:genlisp:gennodejs" ; fi
+    ```
+- Run `$ catkin_make` inside the root of the workspace to compile the files.
+    - Dependencies for python2 that might need to be installed include:
+      `$ pip install defusedxml rospkg empy catkin_pkg catkin_tools rosinstall rosinstall-generator wstool pyserial numpy pyside2`
+    - Otherwise the following might work instead: `$ rosdep install --from-paths src --ignore-src --rosdistro kinetic -y`
+- Variables:
+    - Source the newly created files in the workspace with: `$ source devel/setup.bash`
+    - Export the following environment variable if your arm is the pincher:
+        - `$ export TURTLEBOT_ARM1=pincher`
+    - Otherwise, instead of doing the above manually, use the optional step above `$ source env.sh`
+- Run rvis:
+    - Simulated:
+        - `$ roslaunch turtlebot_arm_moveit_config turtlebot_arm_moveit.launch sim:=true --screen`
+    - Physical:
+        - `$ roslaunch turtlebot_arm_bringup arm.launch`
+        - `$ roslaunch turtlebot_arm_moveit_config turtlebot_arm_moveit.launch sim:=false --screen`
+  
 ## 6️⃣ Getting Started ROS:
 
 -- TODO: ROS ROS ROS --
