@@ -1,5 +1,5 @@
 
-# Arbotix Arm Quickstart
+# TURTLEBOT_ARM1=pincher Arm Quickstart
 
 Navigate to the directory you want to use to hold all the files and run:
 ```
@@ -194,6 +194,8 @@ NOTE: PhantomX Model is different from Turtlebot Pincher.
       `$ pip install defusedxml rospkg empy catkin_pkg catkin_tools rosinstall rosinstall-generator wstool pyserial numpy pyside2`
     - Otherwise the following might work instead: `$ rosdep install --from-paths src --ignore-src --rosdistro kinetic -y`
 - Source the newly created files in the workspace with: `$ source devel/setup.bash`
+- Export the following environment variable if your arm is the pincher:
+    - `$ export TURTLEBOT_ARM1=pincher` 
 - Run rvis:
     - Simulated:
         - `$ roslaunch turtlebot_arm_moveit_config turtlebot_arm_moveit.launch sim:=true --screen`
